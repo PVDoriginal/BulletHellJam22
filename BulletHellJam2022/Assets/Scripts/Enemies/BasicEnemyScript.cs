@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BasicEnemyScript : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     private float minDistanceToPlayer = 2f, maxDistanceToPlayer = 3f; // enemy needs to stay within 2 and 3 units of the player
 
     [SerializeField] private Rigidbody2D Rb;
+    private GameObject playerGameObject;
     private Transform player;
 
     private void Start()
     {
-        player = GameObject.Find("Player").transform;
+        playerGameObject = GameObject.Find("Player");
+        player = playerGameObject.transform;
 
         minDistanceToPlayer = Random.Range(1.5f, 2.3f);
         maxDistanceToPlayer = Random.Range(2.4f, 3.5f);
