@@ -36,4 +36,14 @@ public class LinkHandler : MonoBehaviour
         else if (type == 1)
             GetComponent<BasicEnemyScript>().SetObjectConnection(T);
     }
+
+    public void RemoveLink(Transform T, int type)
+    {
+        if (gameObject.tag == "envObject") return;
+
+        if (type == 0)
+            GetComponent<BasicEnemyScript>().EraseEnemyConnection(T);
+        else if (type == 1)
+            GetComponent<BasicEnemyScript>().EraseObjectConnection(T);
+    }
 }

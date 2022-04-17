@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LinkManager : MonoBehaviour
-{
+{   
+    // 0 - basicEnemy    1 - object
+
     [SerializeField] private LineRenderer LR;
     [SerializeField] private GameObject LRPrefab;
     [SerializeField] private Transform LineParent;
@@ -32,9 +34,6 @@ public class LinkManager : MonoBehaviour
 
         if (G == G1 || G1 == null || !isValid) return;
 
-        GameObject lr = Instantiate(LRPrefab, LineParent);
-        StartCoroutine(lr.GetComponent<LineDrawer>().DrawLine(G1.transform, G.transform));
-
         int type1 = 0, type2 = 0;
 
         if (G1.tag == "basicEnemy")
@@ -47,7 +46,10 @@ public class LinkManager : MonoBehaviour
         else if (G.tag == "envObject")
             type2 = 1;
 
+        GameObject lr = Instantiate(LRPrefab, LineParent);
+        StartCoroutine(lr.GetComponent<LineDrawer>().DrawLine(G1.transform, G.transform, type1, type2));
 
+        
         G.GetComponent<LinkHandler>().CreateLink(G1.transform, type1);
         G1.GetComponent<LinkHandler>().CreateLink(G.transform, type2);
         G1 = null; CurrObject = null;

@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LR: {fileID: 8911273858015692499}
   edge: {fileID: -4635947480580706644}
+  WhiteMat: {fileID: 2100000, guid: f28f7f54e3839034da2a05708ea57f1e, type: 2}
+  RedMat: {fileID: 2100000, guid: 3ce3aaadb2a8b5443ba8e9430eca5948, type: 2}
 --- !u!120 &8911273858015692499
 LineRenderer:
   m_ObjectHideFlags: 0

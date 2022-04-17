@@ -79,7 +79,7 @@ public class BasicEnemyScript : MonoBehaviour
 
         while(true)
         {
-            if (state == 1)
+            if (state == 1 || state == 2)
             {
                 GameObject bullet = Instantiate(ProjectilePrefab, transform);
 
@@ -146,5 +146,15 @@ public class BasicEnemyScript : MonoBehaviour
     public void SetObjectConnection(Transform T)
     {
         ConnectedObjects.Add(T);
+    }
+
+    public void EraseEnemyConnection(Transform T)
+    {
+        ConnectedEnemies.Remove(T);
+    }
+    
+    public void EraseObjectConnection(Transform T)
+    {
+        ConnectedObjects.Remove(T);
     }
 }
