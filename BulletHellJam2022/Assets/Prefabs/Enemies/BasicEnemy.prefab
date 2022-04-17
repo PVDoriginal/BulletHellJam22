@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 877906682069704105}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: basicEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -72,6 +72,7 @@ MonoBehaviour:
   speed: 30
   Rb: {fileID: 4093437613391606093}
   ConnectedEnemies: []
+  ConnectedObjects: []
   ProjectilePrefab: {fileID: 7956495578971398498, guid: c121450270289664694d2d2b9e1cf697, type: 3}
   cooldown: 1.5
 --- !u!114 &1545533489884544640

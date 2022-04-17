@@ -11,6 +11,7 @@ public class BasicEnemyScript : MonoBehaviour
     private Transform player;
 
     [SerializeField] private List<Transform> ConnectedEnemies;
+    [SerializeField] private List<Transform> ConnectedObjects; 
 
     [SerializeField] private GameObject ProjectilePrefab;
 
@@ -93,7 +94,15 @@ public class BasicEnemyScript : MonoBehaviour
     private IEnumerator Pull()
     {
         while(true)
-        {
+        {   
+            foreach(Transform T in ConnectedObjects)
+            {
+                float dist = Vector2.Distance(T.position, transform.position);
+
+                if (dist > 3f)
+                    StartCoroutine(PullToObject(T.position));
+            }
+
             foreach (Transform T in ConnectedEnemies)
             {
                 float dist = Vector2.Distance(T.position, transform.position);
@@ -104,6 +113,17 @@ public class BasicEnemyScript : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    private IEnumerator PullToObject(Vector3 Obj)
+    {
+        beingPulled = true;
+        while(Vector2.Distance(transform.position, Obj) > 3f)
+        {
+            Rb.velocity = (Obj - transform.position).normalized * 60 * Time.fixedDeltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        beingPulled = false;
     }
 
     public IEnumerator PullTowards(Transform target)
@@ -121,5 +141,10 @@ public class BasicEnemyScript : MonoBehaviour
     public void SetEnemyConnection(Transform T)
     {
         ConnectedEnemies.Add(T);
+    }
+
+    public void SetObjectConnection(Transform T)
+    {
+        ConnectedObjects.Add(T);
     }
 }

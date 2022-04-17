@@ -29,6 +29,11 @@ public class LinkHandler : MonoBehaviour
 
     public void CreateLink(Transform T, int type)
     {
-        GetComponent<BasicEnemyScript>().SetEnemyConnection(T);
+        if (gameObject.tag == "envObject") return;
+
+        if (type == 0)
+            GetComponent<BasicEnemyScript>().SetEnemyConnection(T);
+        else if (type == 1)
+            GetComponent<BasicEnemyScript>().SetObjectConnection(T);
     }
 }
