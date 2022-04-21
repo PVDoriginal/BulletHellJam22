@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - rock
+  - tether
+  - terrain
+  - Enemy
+  - Explosive
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - Rock
   - Explosive
   - Enemy
-  - 
+  - Projectile
   - 
   - 
   - 
